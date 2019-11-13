@@ -29,7 +29,7 @@ app.get('/', function (req,res) {
     res.render('Home')
         
 })
-
+///////////////////////Resquests targeting a all characters//////////////////////////////
 
 app.route('/dragonballs')
 
@@ -45,14 +45,14 @@ app.route('/dragonballs')
     })
 })
 .post(function(req,res){
-    const newDragonball = new Dragonball({
+    const newCharacter = new Character({
         _id: req.body._id,
         title: req.body.title,
-        content: req.body.description,
+        description: req.body.description,
         img: req.body.img
     })
 
-    newDragonball.save(function(err){
+    newCharacter.save(function(err){
         if (!err) {
             res.send('Succesfully added a new character');
             
@@ -77,10 +77,11 @@ app.route('/dragonballs')
 app.route('/dragonballs/:characterID')
 .get(function(req,res){
     Character.findOne({
-        _id: req.params._id
-    }, function(err,characterID){
-        if (characterID) {
-            res.send(characterID)
+        _id: req.params.characterID
+    }, function(err,foundCharacter){       
+        
+        if (foundCharacter) {
+            res.send(foundCharacter)
         } else {
             res.send('No character matching your search')
         }
@@ -88,8 +89,8 @@ app.route('/dragonballs/:characterID')
 })
 .put(function(req,res){
     Character.update(
-        {title: req.params.id},
-        {_id:req.body._id,title: req.body.title,description: req.body.description, img: req.body.img},
+        {_id: req.params.characterID},
+        {_id: req.body._id,title: req.body.title,description: req.body.description, img: req.body.img},
         {overwrite: true},
         function(err) {
             if (!err) {
@@ -101,7 +102,7 @@ app.route('/dragonballs/:characterID')
 })
 .patch(function(req,res) {
     Character.update(
-        {_id:req.body._id},
+        {_id:req.params.characterID},
         {$set: req.body},
         function (err) {
             if (!err) {
@@ -114,7 +115,7 @@ app.route('/dragonballs/:characterID')
 })
 .delete(function(req,res){
     Character.deleteOne(
-        {_id: req.params._id},        
+        {_id: req.params.characterID},        
         function(err){
         if (!err) {
             res.send('Succesfully deleted this character');
@@ -126,7 +127,11 @@ app.route('/dragonballs/:characterID')
 })
 
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.listen(port, function() {
+  console.log("Server started succesfully");
 });
