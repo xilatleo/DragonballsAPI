@@ -1,6 +1,55 @@
 <%- include('header') -%>
 
-<h1>Welcome to Dragonballs Characters DB API website</h1>
+
+    <h1>Welcome to Dragonballs Characters DB API website</h1>
+    <div class="row">
+        <div class="col-md-12">
+                <img src="https://i.imgur.com/BPZNC9P.jpg" alt="Goku">
+                <img src="https://i.imgur.com/gNGX3jQ.png" alt="Gohan">
+                <img src="https://i.imgur.com/M0MtpQP.png" alt="Cadic">
+                <img src="https://i.imgur.com/4fNImmW.png" alt="Vegeta">
+                <img src="https://i.imgur.com/of8t3Qo.png" alt="Picolo">
+        </div>
+        <div class="col-md-12">
+            <br><br>
+            <h3>Intro</h3>
+            <p>This is a free online REST API that you can use to search for Dragonballs Characters.
+                It's great for tutorials, testing new libraries, sharing code examples, ... </p>
+                <br><br>
+            <h3>Routes</h3>
+            <p>All HTTP methods are supported.</p>
+            <table class="table">                   
+                    <tbody>
+                      <tr>                        
+                        <td>GET</td>
+                        <td><a href="/dragonballs" target="_blank">/dragonballs</a></td>               
+                      </tr>
+                      <tr>                        
+                        <td>GET</td>
+                        <td><a href="/dragonballs/1" target="_blank">/dragonballs/1</a></td>         
+                      </tr>                      
+                      <tr>                        
+                        <td>POST</td>
+                        <td>/dragonballs</td>         
+                      </tr>                      
+                      <tr>                        
+                        <td>PUT</td>
+                        <td>/dragonballs/1</td>         
+                      </tr>                      
+                      <tr>                        
+                        <td>PATCH</td>
+                        <td>/dragonballs/1</td>         
+                      </tr>                      
+                      <tr>                        
+                        <td>DELETE</td>
+                        <td>/dragonballs/1</td>         
+                      </tr>                      
+                    </tbody>
+                  </table>
+        </div>
+    </div>
+    
+
 
 
 <%- include('footer') -%>
